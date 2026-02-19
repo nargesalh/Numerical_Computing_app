@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/methods_repository.dart';
 import 'tools/bisection_page.dart';
+import 'tools/newton_page.dart';
 
 class LabPage extends StatelessWidget {
   const LabPage({super.key});
@@ -35,6 +36,14 @@ class LabPage extends StatelessWidget {
                     );
                     return;
                   }
+                  if (method.id == 'newton') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const NewtonPage()),
+                    );
+                    return;
+                  }
+
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('${method.title} coming soon')),
                   );
