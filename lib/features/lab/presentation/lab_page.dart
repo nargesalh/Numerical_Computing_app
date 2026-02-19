@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/methods_repository.dart';
+import 'tools/bisection_page.dart';
 
 class LabPage extends StatelessWidget {
   const LabPage({super.key});
@@ -27,6 +28,13 @@ class LabPage extends StatelessWidget {
                 subtitle: Text(method.description),
                 trailing: const Icon(Icons.chevron_right_rounded),
                 onTap: () {
+                  if (method.id == 'bisection') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const BisectionPage()),
+                    );
+                    return;
+                  }
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('${method.title} coming soon')),
                   );
