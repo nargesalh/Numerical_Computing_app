@@ -121,6 +121,23 @@ class _BisectionPageState extends State<BisectionPage> {
     setState(() {});
   }
 
+  void _reset() {
+    _aCtrl.text = "1";
+    _bCtrl.text = "0";
+    _cCtrl.text = "-2";
+
+    _leftCtrl.text = "1";
+    _rightCtrl.text = "2";
+
+    _tolCtrl.text = "0.0001";
+    _maxIterCtrl.text = "50";
+
+    setState(() {
+      _rows = [];
+      _error = null;
+    });
+  }
+
   @override
   void dispose() {
     _aCtrl.dispose();
@@ -201,13 +218,24 @@ class _BisectionPageState extends State<BisectionPage> {
 
                     const SizedBox(height: 16),
 
-                    SizedBox(
-                      width: double.infinity,
-                      child: FilledButton.icon(
-                        onPressed: _compute,
-                        icon: const Icon(Icons.play_arrow_rounded),
-                        label: const Text("Compute"),
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: FilledButton.icon(
+                            onPressed: _compute,
+                            icon: const Icon(Icons.play_arrow_rounded),
+                            label: const Text("Compute"),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: _reset,
+                            icon: const Icon(Icons.refresh_rounded),
+                            label: const Text("Reset"),
+                          ),
+                        ),
+                      ],
                     ),
 
                     if (_error != null) ...[
