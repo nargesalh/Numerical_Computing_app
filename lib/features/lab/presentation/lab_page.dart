@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../data/methods_repository.dart';
 import 'tools/bisection_page.dart';
 import 'tools/newton_page.dart';
+import 'tools/numerical_diff_page.dart';
 
 class LabPage extends StatelessWidget {
   const LabPage({super.key});
@@ -40,6 +41,16 @@ class LabPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (_) => const NewtonPage()),
+                    );
+                    return;
+                  }
+
+                  if (method.id == 'numerical_diff') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const NumericalDiffPage(),
+                      ),
                     );
                     return;
                   }
